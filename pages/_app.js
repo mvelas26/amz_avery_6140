@@ -1,7 +1,14 @@
-import '@styles/globals.css'
+import { useEffect, useState } from 'react';
+import '@styles/globals.css';
 
-function Application({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function MyApp({ Component, pageProps }) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return mounted ? <Component {...pageProps} /> : null;
 }
 
-export default Application
+export default MyApp;
